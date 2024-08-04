@@ -316,7 +316,7 @@ namespace TestOnlineRayCasterClient
             {
                 int[,] worldMap = gameController.GetMap();
                 Player player = gameController.GetPlayer();
-                int moveSpeed = 1;
+                double moveSpeed = 0.05;
                 double dX=0, dY=0;
                 if (worldMap[(int)(player.posX + player.dirX * moveSpeed), (int)player.posY ] == 0) dX = player.dirX * moveSpeed;
                 if (worldMap[(int)(player.posX), (int)(player.posY + player.dirY * moveSpeed)] == 0) dY = player.dirY * moveSpeed;
@@ -326,7 +326,7 @@ namespace TestOnlineRayCasterClient
             {
                 int[,] worldMap = gameController.GetMap();
                 Player player = gameController.GetPlayer();
-                int moveSpeed = 1;
+                double moveSpeed = 0.05;
                 double dX = 0, dY = 0;
                 try
                 {
@@ -340,7 +340,7 @@ namespace TestOnlineRayCasterClient
             {
                 int[,] worldMap = gameController.GetMap();
                 Player player = gameController.GetPlayer();
-                double rotSpeed = 0.3;
+                double rotSpeed = 0.03;
                 double oldDirX = player.dirX;
                 double newDirX = player.dirX * Math.Cos(-rotSpeed) - player.dirY * Math.Sin(-rotSpeed);
                 double newDirY = oldDirX * Math.Sin(-rotSpeed) + player.dirY * Math.Cos(-rotSpeed);
@@ -353,7 +353,7 @@ namespace TestOnlineRayCasterClient
             {
                 int[,] worldMap = gameController.GetMap();
                 Player player = gameController.GetPlayer();
-                double rotSpeed = 0.3;
+                double rotSpeed = 0.03;
                 double oldDirX = player.dirX;
                 double newDirX = player.dirX * Math.Cos(rotSpeed) - player.dirY * Math.Sin(rotSpeed);
                 double newDirY = oldDirX * Math.Sin(rotSpeed) + player.dirY * Math.Cos(rotSpeed);
