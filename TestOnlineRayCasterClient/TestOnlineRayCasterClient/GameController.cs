@@ -63,6 +63,9 @@ namespace TestOnlineRayCasterClient
                     Thread.Sleep(15);
                 }
             }).Start();
+
+            Thread.Sleep(15);
+            
             startUpdateTimer();
         }
         public Player GetPlayer()
