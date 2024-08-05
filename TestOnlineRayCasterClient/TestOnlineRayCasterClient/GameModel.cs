@@ -82,6 +82,24 @@ namespace TestOnlineRayCasterClient
                 }
             }
         }
+        public void SetPlayers(List<Player> players, int playerID)
+        {
+            if(Players == null)
+            {
+                this.Players = players;
+                return;
+            }
+            Player pl = null;
+            foreach(Player p in this.Players)
+            {
+                if (p.Id == playerID) pl = p;
+            }
+            for(int i = 0; i<players.Count; i++)
+            {
+                if (players[i].Id == playerID) players[i] = pl;
+            }
+            this.Players = players;
+        }
         public void SetPlayers(List<Player> players)
         {
             this.Players = players;

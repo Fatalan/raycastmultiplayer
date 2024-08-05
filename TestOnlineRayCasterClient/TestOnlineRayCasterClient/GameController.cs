@@ -50,7 +50,7 @@ namespace TestOnlineRayCasterClient
                     Game.SetMapWidth(gamePacket.MapWidth);
                     Game.SetMapHeight(gamePacket.MapHeight);
                     Game.SetMap(gamePacket.Map);
-                    Game.SetPlayers(gamePacket.Players);
+                    Game.SetPlayers(gamePacket.Players, PlayerID);
                 }
                 dataReader.Recycle();
             };

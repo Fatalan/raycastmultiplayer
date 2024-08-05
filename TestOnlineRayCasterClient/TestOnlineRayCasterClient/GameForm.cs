@@ -26,6 +26,7 @@ namespace TestOnlineRayCasterClient
         StartUpdateTimer startUpdateTimer;
         public void StartUpdTimer()
         {
+            UpdateTimer.Interval = 1;
             UpdateTimer.Enabled = true;
         }
 
