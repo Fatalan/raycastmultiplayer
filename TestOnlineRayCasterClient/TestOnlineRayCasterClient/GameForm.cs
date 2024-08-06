@@ -16,7 +16,7 @@ namespace TestOnlineRayCasterClient
     public partial class GameForm : Form
     {
         private GameController gameController;
-
+        private Timer updateTimerReference;
         struct Sprite
         {
             public double x;
@@ -26,13 +26,26 @@ namespace TestOnlineRayCasterClient
         StartUpdateTimer startUpdateTimer;
         public void StartUpdTimer()
         {
-            UpdateTimer.Interval = 1;
-            UpdateTimer.Enabled = true;
+            if (this.InvokeRequired)
+            {
+                this.Invoke((MethodInvoker)delegate
+                {
+                    UpdateTimer.Interval = 1;
+                    UpdateTimer.Enabled = true;
+                });
+            }
+            else
+            {
+                UpdateTimer.Interval = 1;
+                UpdateTimer.Enabled = true;
+            }
         }
 
         public GameForm(string adress, int port)
         {
             InitializeComponent();
+            updateTimerReference = this.UpdateTimer;
+            GC.KeepAlive(this.UpdateTimer);
             startUpdateTimer = StartUpdTimer;
             gameController = new GameController(adress, port, startUpdateTimer);
         }
@@ -317,7 +330,7 @@ namespace TestOnlineRayCasterClient
             {
                 int[,] worldMap = gameController.GetMap();
                 Player player = gameController.GetPlayer();
-                double moveSpeed = 0.05;
+                double moveSpeed = 0.466;
                 double dX=0, dY=0;
                 if (worldMap[(int)(player.posX + player.dirX * moveSpeed), (int)player.posY ] == 0) dX = player.dirX * moveSpeed;
                 if (worldMap[(int)(player.posX), (int)(player.posY + player.dirY * moveSpeed)] == 0) dY = player.dirY * moveSpeed;
@@ -327,7 +340,7 @@ namespace TestOnlineRayCasterClient
             {
                 int[,] worldMap = gameController.GetMap();
                 Player player = gameController.GetPlayer();
-                double moveSpeed = 0.05;
+                double moveSpeed = 0.466;
                 double dX = 0, dY = 0;
                 try
                 {
